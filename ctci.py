@@ -2,6 +2,7 @@ from collections import Counter
 from linkedlists import Node
 from linkedlists import has_cycle
 import linkedlists
+import balanced_brackets
 
 
 def number_needed(a, b):
@@ -46,10 +47,10 @@ def ransom_note(magazine, ransom):
 
 if __name__ == "__main__":
 
-    z = Node(1, None)
-    y = Node(2, z)
-    x = Node(3, y)
-    v = Node(4, x)
-    z.next = y
-
-    print(has_cycle(v))
+    t = 1
+    for a0 in range(t):
+        expression = '({(){}[]})[]'
+        if balanced_brackets.is_matched(expression) is True:
+            print("YES")
+        else:
+            print("NO")
