@@ -9,6 +9,9 @@ def is_matched(expression):
         if i in left_brackets:
             left_stack.append(i)
         elif i in right_brackets:
+            if len(left_stack) == 0:
+                valid = False
+                break
             item = left_stack.pop()
             if item != right_brackets[i]:
                 valid = False
