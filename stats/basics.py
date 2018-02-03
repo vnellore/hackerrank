@@ -1,4 +1,5 @@
 from collections import Counter
+import math
 
 def mean(numbers):
     mean_value = sum(numbers) / len(numbers)
@@ -72,14 +73,18 @@ def process_freq_datasets(x, f):
                 
     return sorted(s)
 
+def compute_standard_deviation(input_list):
+    computed_mean = mean(input_list)
+    print(input_list)
+    print(f'mean - {computed_mean}')
+    sq = [math.pow(i-computed_mean, 2) for i in input_list]
+
+    std_deviation = math.sqrt(sum(sq) / len(input_list))
+    return round(std_deviation, 1)
+
 if __name__ == '__main__':
 
     #n = int(input())
     #x = list(map(int, input().split(' ')))
-    x = list(map(int, '10 40 30 50 20 10 40 30 50 20 1 2 3 4 5 6 7 8 9 10'.split(' ')))
-    f = list(map(int, '1 2 3 4 5 6 7 8 9 10 10 40 30 50 20 10 40 30 50 20'.split(' ') ))
-    s = process_freq_datasets(x, f)
-    print(s)
-    intquartile_range = compute_interquartile_range(s)
-
-    print(float(intquartile_range))
+    x = list(map(int, '10 40 30 50 20'.split(' ')))
+    print(compute_standard_deviation(x))
