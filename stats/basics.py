@@ -43,14 +43,31 @@ def weighted_mean(data_points, weights):
     weighted_mean_val = weighted_mean_val / sum(weights)
     return weighted_mean_val
 
+def compute_quartiles(number_list):
+    second_quartile = median(number_list)
+    print(f'second quartile is {second_quartile}')
+    sorted_num_list = sorted(number_list)
+    print(sorted_num_list)
+    
+    half_point = int(len(sorted_num_list) / 2)
+        
+    if second_quartile in sorted_num_list:
+        del sorted_num_list[half_point]
+        
+    first_half = sorted_num_list[0:half_point]
+    second_half = sorted_num_list[half_point:]
+
+    first_quartile = median(first_half)
+    third_quartile = median(second_half)
+    print(first_half)
+    print(second_half)
+    print(f'first quartile - {int(first_quartile)}')
+    print(f'third quartile - {int(third_quartile)}')
+
+
 if __name__ == '__main__':
 
     #n = int(input())
     #x = list(map(int, input().split(' ')))
-    x = list(map(int, '10 40 30 50 20'.split(' ')))
-    y = list(map(int, '1 2 3 4 5'.split(' ')))
-
-    print('Mean is ' + str(mean(x)))    
-    print('Median is ' + str(median(x)))
-    print('Weighted mean is ' + str(weighted_mean(x, y)))
-    #print('Mode is ' + str(mode(x)))
+    x = list(map(int, '3 7 8 5 12 14 21 13 18'.split(' ')))
+    compute_quartiles(x)
